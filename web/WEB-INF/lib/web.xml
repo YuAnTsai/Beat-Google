@@ -1,0 +1,15 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <parameter-encoding default-charset="UTF-8"/>
+  <servlet>
+    <servlet-name>HelloForm</servlet-name>
+    <servlet-class>com.runoob.test.HelloForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloForm</servlet-name>
+    <url-pattern>/Testt/HelloForm</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
