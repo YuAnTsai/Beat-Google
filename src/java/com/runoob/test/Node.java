@@ -62,7 +62,7 @@ public class Node{
     }
     
 
-public String getTitle(){return this.title;} 
+public String getTitle(){return this.title;}  
 public String getPic(){return this.pic;} 
 public String getView(){return "觀看次數: "+this.view+" 次";} 
 public String getKeyword(){return this.keyword;}
