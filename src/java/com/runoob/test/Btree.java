@@ -43,7 +43,7 @@ if(n.getChildrenItems()!=null){
         List<Node>getFBchildren=n.getChildrenItems();
         for(int j=0;j<getFBchildren.size();j++){
             Node fb=getchildren.get(j);
-            System.out.println(fb.fbURL);
+            System.out.println(fb.fbURL); 
         }
        }}catch(Exception ex){
            
