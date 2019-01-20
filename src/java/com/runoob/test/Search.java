@@ -27,7 +27,7 @@ import org.jsoup.select.Elements;
 
 /**
  *
- * @author Vivi
+ * @author Clemmy
  */
 @WebServlet(name="Search",urlPatterns = {"/Search"})
 public class Search extends HttpServlet {
@@ -45,7 +45,7 @@ public class Search extends HttpServlet {
     
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+     /*output result on index.jsp*/
         String query_ = request.getParameter("query");
         
         query_= java.net.URLDecoder.decode(query_, "utf-8");
@@ -112,10 +112,10 @@ public class Search extends HttpServlet {
     }
     
 public KeywordList searchresult (String query, HttpServletResponse response, HttpServletRequest request)throws IOException {
-        
+        /*Get the raw searched result from youtube ,organize them in certain format(依序排好:(url,title,picture,view,parent node)) and add them into keywordlist*/
         System.out.println(query);
         query= new String(request.getParameter("query").toString().getBytes("utf-8"), "utf-8");
-        /**/
+        
         ArrayList<String>array1=new ArrayList<String>();
         String query11="";
         KeywordList ytlist=new KeywordList();
@@ -281,6 +281,7 @@ public KeywordList searchresult (String query, HttpServletResponse response, Htt
     
 }
 	public static String getEncoding(String str) {
+		/*測試編碼用*/
 		String encode[] = new String[]{
 				"UTF-8",
 				"ISO-8859-1",
@@ -303,6 +304,7 @@ public KeywordList searchresult (String query, HttpServletResponse response, Htt
 		return "";
 	}
 public String getIn (String url,HttpServletResponse response,HttpServletRequest request,Node parent) throws IOException{
+    /*進入一個一個youtube影片內,抓取facebook連結*/
     String c="";
     String relHref="";
    List<Node>fblist2=new ArrayList<Node>();
@@ -337,6 +339,7 @@ for(Element link:links){
  return c;
 }
 public void FaceBook (String fburl,HttpServletResponse response,HttpServletRequest request,Node parent) throws IOException{
+/*進入facebook並且進入其中搜尋是否有po文,若有,則抓取其中兩則,最後建立一個一個完整的樹並print出來(呼叫PrintTree())*/
 Btree bt=new Btree();
     int count=0;
 
