@@ -304,7 +304,7 @@ public KeywordList searchresult (String query, HttpServletResponse response, Htt
 		return "";
 	}
 public String getIn (String url,HttpServletResponse response,HttpServletRequest request,Node parent) throws IOException{
-    /*進入一個一個youtube影片內,抓取facebook連結*/
+    /*進入一個一個youtube影片內,抓取facebook連結,建立youtube和facebook的子父節點關係*/
     String c="";
     String relHref="";
    List<Node>fblist2=new ArrayList<Node>();
@@ -325,7 +325,8 @@ for(Element link:links){
         if(relHref.contains("facebook")&&(!relHref.contains("播放時間"))){
         relHref.replace("\n", "");
         c=relHref;
-        Node fbb=new Node(c,"",parent);
+        /*建立youtube和facebook的父子節點關係*/
+	Node fbb=new Node(c,"",parent);
         fblist2.add(fbb);
         parent.setChildrenItems(fblist2);
      
@@ -363,6 +364,8 @@ for(Element link:links){
         fblist.add(new Node(relHref2,"",fb));
 }
 }
+
+/*建立facebook和po文連結的父子節點關係*/
 fb.setChildrenItems(fblist);
 List<Node>ch=fb.getChildrenItems();
 for(int n=0;n<ch.size();n++){
@@ -373,6 +376,8 @@ Node nn=ch.get(n);
 }catch(Exception ex){   
 }
 System.out.println("Print tree");
+
+/*建立整個tree*/
 bt.BuildTree(parent);
 bt.PrintTree();
 }
