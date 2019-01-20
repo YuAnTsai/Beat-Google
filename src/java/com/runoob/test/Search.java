@@ -350,7 +350,6 @@ try{
 List <Node> items=parent.getChildrenItems();
 for(int i=0;i<items.size();i++){
 Node fb=items.get(i);
-
 Document  doc3 = Jsoup.connect(fb.fbURL)
       .userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36")
       .timeout(2700)
@@ -361,30 +360,20 @@ for(Element link:links){
     if((relHref2.contains("posts/")||relHref2.contains("photos/"))&&(count<2)&&(!relHref2.contains("page"))){ 
         count++;
         relHref2="www.facebook.com"+relHref2;
-   
         fblist.add(new Node(relHref2,"",fb));
-        
 }
 }
 fb.setChildrenItems(fblist);
 List<Node>ch=fb.getChildrenItems();
 for(int n=0;n<ch.size();n++){
 Node nn=ch.get(n);
-  }
-
+			}
 }
-
-
-
-       
+	
 }catch(Exception ex){   
 }
 System.out.println("Print tree");
-
 bt.BuildTree(parent);
 bt.PrintTree();
 }
-
-
-
 }
